@@ -9,7 +9,10 @@ entity Organization {
 }
 
 relationship OneToMany {
-	BIComponent{organization} to Organization
+	Organization to BIComponent{organization} 
+}
+relationship OneToMany {
+	Organization to User{organization} 
 }
 
 dto * with mapstruct
