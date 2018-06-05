@@ -38,6 +38,9 @@ public class CacheConfiguration {
             cm.createCache(com.ncr.project.horizon.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.ncr.project.horizon.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.ncr.project.horizon.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.ncr.project.horizon.domain.BIComponent.class.getName(), jcacheConfiguration);
+            cm.createCache(com.ncr.project.horizon.domain.BIComponent.class.getName() + ".organizations", jcacheConfiguration);
+            cm.createCache(com.ncr.project.horizon.domain.Organization.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
