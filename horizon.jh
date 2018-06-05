@@ -1,0 +1,19 @@
+entity BIComponent {
+	name String required,
+    key String required,
+    auth String
+}
+
+entity Organization {
+	name String required
+}
+
+relationship OneToMany {
+	Organization to BIComponent{organization} 
+}
+
+dto * with mapstruct
+
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with ag
