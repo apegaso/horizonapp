@@ -18,7 +18,6 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Name</span></th>
-            <th><span>B I Component</span></th>
             <th></th>
             </tr>
             </thead>
@@ -26,11 +25,6 @@
             <tr *ngFor="let organization of organizations ;trackBy: trackId">
                 <td><a [routerLink]="['../organization-ag', organization.id ]">{{organization.id}}</a></td>
                 <td>{{organization.name}}</td>
-                <td>
-                    <div *ngIf="organization.bIComponentId">
-                        <a [routerLink]="['../bi-component-ag', organization.bIComponentId  ]" >{{organization.bIComponentId}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

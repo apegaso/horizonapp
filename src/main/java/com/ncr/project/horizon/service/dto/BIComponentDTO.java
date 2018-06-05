@@ -22,6 +22,8 @@ public class BIComponentDTO implements Serializable {
 
     private String auth;
 
+    private Long organizationId;
+
     public Long getId() {
         return id;
     }
@@ -52,6 +54,14 @@ public class BIComponentDTO implements Serializable {
 
     public void setAuth(String auth) {
         this.auth = auth;
+    }
+
+    public Long getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(Long organizationId) {
+        this.organizationId = organizationId;
     }
 
     @Override

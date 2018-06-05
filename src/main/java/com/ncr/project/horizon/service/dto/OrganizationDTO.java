@@ -17,8 +17,6 @@ public class OrganizationDTO implements Serializable {
     @NotNull
     private String name;
 
-    private Long bIComponentId;
-
     public Long getId() {
         return id;
     }
@@ -33,14 +31,6 @@ public class OrganizationDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getBIComponentId() {
-        return bIComponentId;
-    }
-
-    public void setBIComponentId(Long bIComponentId) {
-        this.bIComponentId = bIComponentId;
     }
 
     @Override

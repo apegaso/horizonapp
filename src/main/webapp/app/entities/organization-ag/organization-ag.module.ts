@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HorizonappSharedModule } from '../../shared';
+import { HorizonappAdminModule } from '../../admin/admin.module';
 import {
     OrganizationAgService,
     OrganizationAgPopupService,
@@ -23,6 +24,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         HorizonappSharedModule,
+        HorizonappAdminModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

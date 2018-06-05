@@ -6,7 +6,7 @@ export class BIComponentAg implements BaseEntity {
         public name?: string,
         public key?: string,
         public auth?: string,
-        public organizations?: BaseEntity[],
+        public organizationId?: number,
     ) {
     }
 }

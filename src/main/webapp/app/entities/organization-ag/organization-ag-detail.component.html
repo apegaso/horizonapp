@@ -8,12 +8,6 @@
         <dd>
             <span>{{organization.name}}</span>
         </dd>
-        <dt><span>B I Component</span></dt>
-        <dd>
-            <div *ngIf="organization.bIComponentId">
-                <a [routerLink]="['/bi-component-ag', organization.bIComponentId]">{{organization.bIComponentId}}</a>
-            </div>
-        </dd>
     </dl>
 
     <button type="submit"

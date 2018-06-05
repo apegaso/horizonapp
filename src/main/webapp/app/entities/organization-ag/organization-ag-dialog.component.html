@@ -24,13 +24,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label" for="field_bIComponent">B I Component</label>
-            <select class="form-control" id="field_bIComponent" name="bIComponent" [(ngModel)]="organization.bIComponentId" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="bIComponentOption.id" *ngFor="let bIComponentOption of bicomponents; trackBy: trackBIComponentById">{{bIComponentOption.id}}</option>
-            </select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

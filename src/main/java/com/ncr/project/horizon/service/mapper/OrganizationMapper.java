@@ -8,13 +8,12 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Organization and its DTO OrganizationDTO.
  */
-@Mapper(componentModel = "spring", uses = {BIComponentMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface OrganizationMapper extends EntityMapper<OrganizationDTO, Organization> {
 
-    @Mapping(source = "bIComponent.id", target = "bIComponentId")
-    OrganizationDTO toDto(Organization organization);
 
-    @Mapping(source = "bIComponentId", target = "bIComponent")
+    @Mapping(target = "bIComponents", ignore = true)
+    @Mapping(target = "users", ignore = true)
     Organization toEntity(OrganizationDTO organizationDTO);
 
     default Organization fromId(Long id) {

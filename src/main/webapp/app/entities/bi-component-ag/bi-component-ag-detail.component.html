@@ -16,6 +16,12 @@
         <dd>
             <span>{{bIComponent.auth}}</span>
         </dd>
+        <dt><span>Organization</span></dt>
+        <dd>
+            <div *ngIf="bIComponent.organizationId">
+                <a [routerLink]="['/organization-ag', bIComponent.organizationId]">{{bIComponent.organizationId}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

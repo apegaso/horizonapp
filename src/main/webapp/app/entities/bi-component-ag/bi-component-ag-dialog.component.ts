@@ -4,11 +4,12 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { BIComponentAg } from './bi-component-ag.model';
 import { BIComponentAgPopupService } from './bi-component-ag-popup.service';
 import { BIComponentAgService } from './bi-component-ag.service';
+import { OrganizationAg, OrganizationAgService } from '../organization-ag';
 
 @Component({
     selector: 'jhi-bi-component-ag-dialog',
@@ -19,15 +20,21 @@ export class BIComponentAgDialogComponent implements OnInit {
     bIComponent: BIComponentAg;
     isSaving: boolean;
 
+    organizations: OrganizationAg[];
+
     constructor(
         public activeModal: NgbActiveModal,
+        private jhiAlertService: JhiAlertService,
         private bIComponentService: BIComponentAgService,
+        private organizationService: OrganizationAgService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.organizationService.query()
+            .subscribe((res: HttpResponse<OrganizationAg[]>) => { this.organizations = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -58,6 +65,14 @@ export class BIComponentAgDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackOrganizationById(index: number, item: OrganizationAg) {
+        return item.id;
     }
 }
 

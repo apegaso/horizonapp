@@ -9,6 +9,7 @@ import { HorizonappTestModule } from '../../../test.module';
 import { BIComponentAgDialogComponent } from '../../../../../../main/webapp/app/entities/bi-component-ag/bi-component-ag-dialog.component';
 import { BIComponentAgService } from '../../../../../../main/webapp/app/entities/bi-component-ag/bi-component-ag.service';
 import { BIComponentAg } from '../../../../../../main/webapp/app/entities/bi-component-ag/bi-component-ag.model';
+import { OrganizationAgService } from '../../../../../../main/webapp/app/entities/organization-ag';
 
 describe('Component Tests', () => {
 
@@ -24,6 +25,7 @@ describe('Component Tests', () => {
                 imports: [HorizonappTestModule],
                 declarations: [BIComponentAgDialogComponent],
                 providers: [
+                    OrganizationAgService,
                     BIComponentAgService
                 ]
             })

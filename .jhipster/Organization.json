@@ -2,10 +2,16 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipType": "one-to-many",
             "relationshipName": "bIComponent",
             "otherEntityName": "bIComponent",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
+            "otherEntityRelationshipName": "organization"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "organization"
         }
     ],
     "fields": [

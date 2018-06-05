@@ -1,5 +1,6 @@
 package com.ncr.project.horizon.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,6 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -28,8 +31,15 @@ public class Organization implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne
-    private BIComponent bIComponent;
+    @OneToMany(mappedBy = "organization")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<BIComponent> bIComponents = new HashSet<>();
+
+    @OneToMany(mappedBy = "organization")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<User> users = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -53,17 +63,54 @@ public class Organization implements Serializable {
         this.name = name;
     }
 
-    public BIComponent getBIComponent() {
-        return bIComponent;
+    public Set<BIComponent> getBIComponents() {
+        return bIComponents;
     }
 
-    public Organization bIComponent(BIComponent bIComponent) {
-        this.bIComponent = bIComponent;
+    public Organization bIComponents(Set<BIComponent> bIComponents) {
+        this.bIComponents = bIComponents;
         return this;
     }
 
-    public void setBIComponent(BIComponent bIComponent) {
-        this.bIComponent = bIComponent;
+    public Organization addBIComponent(BIComponent bIComponent) {
+        this.bIComponents.add(bIComponent);
+        bIComponent.setOrganization(this);
+        return this;
+    }
+
+    public Organization removeBIComponent(BIComponent bIComponent) {
+        this.bIComponents.remove(bIComponent);
+        bIComponent.setOrganization(null);
+        return this;
+    }
+
+    public void setBIComponents(Set<BIComponent> bIComponents) {
+        this.bIComponents = bIComponents;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public Organization users(Set<User> users) {
+        this.users = users;
+        return this;
+    }
+
+    public Organization addUser(User user) {
+        this.users.add(user);
+        user.setOrganization(this);
+        return this;
+    }
+
+    public Organization removeUser(User user) {
+        this.users.remove(user);
+        user.setOrganization(null);
+        return this;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

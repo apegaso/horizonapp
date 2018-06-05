@@ -1,10 +1,11 @@
-import { BaseEntity } from './../../shared';
+import { BaseEntity, User } from './../../shared';
 
 export class OrganizationAg implements BaseEntity {
     constructor(
         public id?: number,
         public name?: string,
-        public bIComponentId?: number,
+        public bIComponents?: BaseEntity[],
+        public users?: User[],
     ) {
     }
 }
